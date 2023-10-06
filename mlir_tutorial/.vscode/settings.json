@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"*.inc": "cpp"
+	},
+	"bazel.buildWorkspace": "${workspaceFolder}",
+    "bazel.bazelBinPath": "${workspaceFolder}/bazel-bin",
+    "bazel.bazelOutPath": "${workspaceFolder}/bazel-out"
+}
