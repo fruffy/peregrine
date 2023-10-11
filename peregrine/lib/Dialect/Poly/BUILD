@@ -13,10 +13,9 @@ td_library(
         "PolyTypes.td",
     ],
     deps = [
-        # the base mlir target for defining operations and dialects in tablegen
-        "@llvm-project//mlir:OpBaseTdFiles",
         "@llvm-project//mlir:BuiltinDialectTdFiles",
         "@llvm-project//mlir:InferTypeOpInterfaceTdFiles",
+        "@llvm-project//mlir:OpBaseTdFiles",
         "@llvm-project//mlir:SideEffectInterfacesTdFiles",
     ],
 )
@@ -100,14 +99,23 @@ gentbl_cc_library(
 
 cc_library(
     name = "Poly",
-    srcs = ["PolyDialect.cpp", "PolyOps.cpp"],
-    hdrs = ["PolyDialect.h", "PolyOps.h", "PolyTraits.h", "PolyTypes.h"],
+    srcs = [
+        "PolyDialect.cpp",
+        "PolyOps.cpp",
+    ],
+    hdrs = [
+        "PolyDialect.h",
+        "PolyOps.h",
+        "PolyTraits.h",
+        "PolyTypes.h",
+    ],
     deps = [
         ":canonicalize_inc_gen",
         ":dialect_inc_gen",
         ":ops_inc_gen",
         ":types_inc_gen",
         "@llvm-project//mlir:ComplexDialect",
+        "@llvm-project//mlir:Dialect",
         "@llvm-project//mlir:IR",
         "@llvm-project//mlir:InferTypeOpInterface",
         "@llvm-project//mlir:Support",
