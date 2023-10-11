@@ -3,15 +3,13 @@
 
 #include "mlir/Pass/Pass.h"
 
-namespace mlir
-{
-    namespace tutorial
-    {
+namespace mlir {
+namespace tutorial {
 
 #define GEN_PASS_DECL_AFFINEFULLUNROLLPATTERNREWRITE
-#include "lib/Transform/Affine/Passes.h.inc"
+#include "lib/Transform/PeregrineAffine/Passes.h.inc"
 
-    } // namespace tutorial
-} // namespace mlir
+}  // namespace tutorial
+}  // namespace mlir
 
-#endif // LIB_TRANSFORM_AFFINE_AFFINEFULLUNROLLPATTERNREWRITE_H_
+#endif  // LIB_TRANSFORM_AFFINE_AFFINEFULLUNROLLPATTERNREWRITE_H_

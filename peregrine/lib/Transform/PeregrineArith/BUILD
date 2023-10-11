@@ -1,4 +1,4 @@
-# Passes that work with the Affine dialect
+# Passes that work with the Arith dialect
 
 load("@llvm-project//mlir:tblgen.bzl", "gentbl_cc_library")
 
@@ -12,13 +12,13 @@ gentbl_cc_library(
         (
             [
                 "-gen-pass-decls",
-                "-name=Affine",
+                "-name=Arith",
             ],
             "Passes.h.inc",
         ),
         (
             ["-gen-pass-doc"],
-            "AffinePasses.md",
+            "ArithPasses.md",
         ),
     ],
     tblgen = "@llvm-project//mlir:mlir-tblgen",
@@ -30,30 +30,12 @@ gentbl_cc_library(
 )
 
 cc_library(
-    name = "AffineFullUnroll",
-    srcs = ["AffineFullUnroll.cpp"],
-    hdrs = ["AffineFullUnroll.h", "Passes.h"],
+    name = "MulToAdd",
+    srcs = ["MulToAdd.cpp"],
+    hdrs = ["MulToAdd.h"],
     deps = [
         ":pass_inc_gen",
-        "@llvm-project//mlir:AffineDialect",
-        "@llvm-project//mlir:AffineUtils",
-        "@llvm-project//mlir:FuncDialect",
-        "@llvm-project//mlir:Pass",
-        "@llvm-project//mlir:Transforms",
-    ],
-)
-
-cc_library(
-    name = "AffineFullUnrollPatternRewrite",
-    srcs = ["AffineFullUnrollPatternRewrite.cpp"],
-    hdrs = [
-        "AffineFullUnrollPatternRewrite.h",
-        "Passes.h",
-    ],
-    deps = [
-        ":pass_inc_gen",
-        "@llvm-project//mlir:AffineDialect",
-        "@llvm-project//mlir:AffineUtils",
+        "@llvm-project//mlir:ArithDialect",
         "@llvm-project//mlir:FuncDialect",
         "@llvm-project//mlir:Pass",
         "@llvm-project//mlir:Transforms",
@@ -64,8 +46,7 @@ cc_library(
     name = "Passes",
     hdrs = ["Passes.h"],
     deps = [
-        ":AffineFullUnroll",
-        ":AffineFullUnrollPatternRewrite",
+        ":MulToAdd",
         ":pass_inc_gen",
     ],
 )

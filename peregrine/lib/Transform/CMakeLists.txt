@@ -1,0 +1,2 @@
+add_subdirectory(PeregrineAffine)
+add_subdirectory(PeregrineArith)

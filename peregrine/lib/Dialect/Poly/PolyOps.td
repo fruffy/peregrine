@@ -9,8 +9,8 @@ include "mlir/Interfaces/InferTypeOpInterface.td"
 include "mlir/Interfaces/SideEffectInterfaces.td"
 
 // Type constraint for poly binop arguments: polys, vectors of polys, or
-// tensors of polys. 
-def PolyOrContainer: TypeOrContainer<Polynomial, "poly-or-container">;
+// tensors of polys.
+def PolyOrContainer : TypeOrContainer<Polynomial, "poly-or-container">;
 
 // Inject verification that all integer-like arguments are 32-bits
 def Has32BitArguments : NativeOpTrait<"Has32BitArguments"> {
@@ -63,5 +63,6 @@ def Poly_ConstantOp : Op<Poly_Dialect, "constant", [Pure, ConstantLike]> {
   let assemblyFormat = "$coefficients attr-dict `:` qualified(type($output))";
   let hasFolder = 1;
 }
+
 
 #endif  // LIB_DIALECT_POLY_POLYOPS_TD_
